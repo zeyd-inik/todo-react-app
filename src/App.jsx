@@ -14,6 +14,15 @@ const App = () => {
     };
     setItems([...items, newItem]);
   };
+
+  const editItem = (itemId) => {
+    const selectedItem = items.filter((item) => {
+      return item.id === itemId;
+    });
+    selectedItem.completed = !selectedItem.completed;
+    setItems([new Set(...items, selectedItem)]);
+  };
+
   const deleteItem = (itemId) => {
     const newList = items.filter((item) => {
       return item.id !== itemId;
@@ -23,7 +32,12 @@ const App = () => {
 
   return (
     <main className="app">
-      <Form items={items} addItem={addItem} deleteItem={deleteItem} />
+      <Form
+        items={items}
+        addItem={addItem}
+        editItem={editItem}
+        deleteItem={deleteItem}
+      />
     </main>
   );
 };

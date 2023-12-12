@@ -297,6 +297,9 @@ ul {
   position: relative;
   top: 10px;
 }
+.list-item-comp .section-A p.active {
+  text-decoration: line-through;
+}
 .list-item-comp button {
   margin-left: auto;
   background-color: rgb(248, 93, 93);

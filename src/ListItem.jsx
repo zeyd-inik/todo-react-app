@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const ListItem = ({ completed, text, id, deleteItem }) => {
+const ListItem = ({ completed, text, id, deleteItem, editItem }) => {
   const [isChecked, setIsChecked] = useState(completed);
   return (
     <div className="list-item-comp">
@@ -8,11 +8,14 @@ const ListItem = ({ completed, text, id, deleteItem }) => {
         <input
           type="checkbox"
           checked={isChecked}
+          onClick={() => {
+            editItem(id);
+          }}
           onChange={() => {
             setIsChecked(!isChecked);
           }}
         />
-        <p className="text">{text}</p>
+        <p className={isChecked ? 'active text' : 'text'}>{text}</p>
       </div>
       <button
         onClick={() => {
